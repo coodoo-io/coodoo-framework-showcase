@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import io.coodoo.framework.listing.boundary.Listing;
 import io.coodoo.framework.listing.boundary.ListingParameters;
 import io.coodoo.framework.listing.boundary.ListingResult;
-import io.coodoo.framework.showcase.listing.entity.ListingCar;
+import io.coodoo.framework.showcase.listing.entity.Car;
 
 /**
  * EJB to demonstrate the usage of <strong>coodoo-listing</strong>
@@ -28,9 +28,9 @@ public class ListingService {
      * @param listingParameters defines the listing queue.
      * @return a {@link ListingResult} object containing metadata and the resulting list (sublist in case of pagination)
      */
-    public ListingResult<ListingCar> getCarListing(ListingParameters listingParameters) {
+    public ListingResult<Car> getCarListing(ListingParameters listingParameters) {
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
     /**
@@ -39,9 +39,9 @@ public class ListingService {
      * @param listingParameters defines the listing queue. It contains optional query parameters as described above
      * @return the resulting cars list (sublist in case of pagination)
      */
-    public List<ListingCar> getCars(ListingParameters listingParameters) {
+    public List<Car> getCars(ListingParameters listingParameters) {
 
-        return Listing.getListing(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListing(entityManager, Car.class, listingParameters);
     }
 
     /**
@@ -52,7 +52,7 @@ public class ListingService {
      */
     public Long getCarCount(ListingParameters listingParameters) {
 
-        return Listing.countListing(entityManager, ListingCar.class, listingParameters);
+        return Listing.countListing(entityManager, Car.class, listingParameters);
     }
 
 }

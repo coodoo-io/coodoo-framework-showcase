@@ -2,6 +2,7 @@ package io.coodoo.framework.showcase.listing.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.coodoo.framework.listing.boundary.annotation.ListingFilterIgnore;
+import io.coodoo.framework.listing.boundary.annotation.ListingLikeOnNumber;
+
 /**
  * Entity to demonstrate the usage of <strong>coodoo-listing</strong>
  * 
@@ -17,43 +21,68 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "car")
-public class ListingCar {
+public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String manufactor;
 
+    @Column
     private String model;
 
+    @Column
     private String name;
 
+    @Column
     private String vehicle;
 
+    @Column
     private Integer seats;
 
+    @Column
     private Double engineDisplacement;
 
+    /**
+     * The annotation <code>@ListingLikeOnNumber<code> enables a LIKE query on the attribute. </br>
+     * In this case the horsepower is calculated from the kw (kilo watt) number and so it is nearly always fractional and not easy to search for.
+     */
+    @ListingLikeOnNumber
+    @Column
     private Double hp;
 
+    /**
+     * The annotation <code>@ListingFilterIgnore<code> avoids this field from be part in a type wide listing filter
+     */
+    @ListingFilterIgnore
+    @Column
     private String transmission;
 
+    @Column
     private boolean allWheelDrive;
 
+    @Column
     private String misc;
 
+    @Column
     @Enumerated(EnumType.STRING)
-    private ListingCarFuel fuel;
+    private CarFuel fuel;
 
+    @Column
     private String fuelInjection;
 
+    @Column
     private Double consumption;
 
+    @Column
     private Long price;
 
+    @Column
     private LocalDateTime createdAt;
 
+    @Column
     private LocalDateTime updatedAt;
 
     public Long getId() {
@@ -144,11 +173,11 @@ public class ListingCar {
         this.misc = misc;
     }
 
-    public ListingCarFuel getFuel() {
+    public CarFuel getFuel() {
         return fuel;
     }
 
-    public void setFuel(ListingCarFuel fuel) {
+    public void setFuel(CarFuel fuel) {
         this.fuel = fuel;
     }
 

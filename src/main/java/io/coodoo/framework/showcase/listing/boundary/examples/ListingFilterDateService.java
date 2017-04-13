@@ -1,4 +1,4 @@
-package io.coodoo.framework.showcase.listing.boundary;
+package io.coodoo.framework.showcase.listing.boundary.examples;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,14 +10,14 @@ import javax.persistence.PersistenceContext;
 import io.coodoo.framework.listing.boundary.Listing;
 import io.coodoo.framework.listing.boundary.ListingParameters;
 import io.coodoo.framework.listing.boundary.ListingResult;
-import io.coodoo.framework.showcase.listing.entity.ListingCar;
+import io.coodoo.framework.showcase.listing.entity.Car;
 
 /**
  * EJB to demonstrate the usage of date filters with <strong>coodoo-listing</strong>
  * 
- * 
- * 
+ * <p>
  * Dates can be queried by the filter pattern "DD.MM.YYYY" (at least the year is needed).
+ * </p>
  * 
  * <h2>Supported data types</h2>
  * <ul>
@@ -41,124 +41,124 @@ public class ListingFilterDateService {
     @PersistenceContext
     EntityManager entityManager;
 
-    public ListingResult<ListingCar> getAllOfADate() {
+    public ListingResult<Car> getAllOfADate() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=02.11.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "02.11.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllOfAMonth() {
+    public ListingResult<Car> getAllOfAMonth() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=11.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "11.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllOfAYear() {
+    public ListingResult<Car> getAllOfAYear() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllBeforeADate() {
+    public ListingResult<Car> getAllBeforeADate() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=<02.11.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "<02.11.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllBeforeAMonth() {
+    public ListingResult<Car> getAllBeforeAMonth() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=<11.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "<11.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllBeforeAYear() {
+    public ListingResult<Car> getAllBeforeAYear() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=<2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "<2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllAfterADate() {
+    public ListingResult<Car> getAllAfterADate() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=>02.11.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", ">02.11.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllAfterAMonth() {
+    public ListingResult<Car> getAllAfterAMonth() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=>11.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", ">11.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllAfterAYear() {
+    public ListingResult<Car> getAllAfterAYear() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=>2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", ">2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllOfLastChristmas() {
+    public ListingResult<Car> getAllOfLastChristmas() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=24.12.2016-26.12.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "24.12.2016-26.12.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllFromMayToAugust() {
+    public ListingResult<Car> getAllFromMayToAugust() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=5.2016-8.2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "5.2016-8.2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<ListingCar> getAllFromNikolasToEndOfYear() {
+    public ListingResult<Car> getAllFromNikolasToEndOfYear() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=6.12.2016-2016
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("createdAt", "6.12.2016-2016");
 
-        return Listing.getListingResult(entityManager, ListingCar.class, listingParameters);
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
 }

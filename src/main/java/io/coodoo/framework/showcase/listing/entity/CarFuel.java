@@ -5,7 +5,7 @@ package io.coodoo.framework.showcase.listing.entity;
  * 
  * @author coodoo GmbH (coodoo.io)
  */
-public enum ListingCarFuel {
+public enum CarFuel {
 
     Benzin, Diesel, Erdgas;
 

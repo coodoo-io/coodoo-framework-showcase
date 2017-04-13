@@ -2,8 +2,8 @@ package io.coodoo.framework.showcase.listing.boundary.dto;
 
 import java.time.LocalDateTime;
 
-import io.coodoo.framework.showcase.listing.entity.ListingCar;
-import io.coodoo.framework.showcase.listing.entity.ListingCarFuel;
+import io.coodoo.framework.showcase.listing.entity.Car;
+import io.coodoo.framework.showcase.listing.entity.CarFuel;
 
 /**
  * DTO to demonstrate the usage of <strong>coodoo-listing</strong>
@@ -23,14 +23,14 @@ public class ListingCarDTO {
     public String transmission;
     public boolean allWheelDrive;
     public String misc;
-    public ListingCarFuel fuel;
+    public CarFuel fuel;
     public String fuelInjection;
     public Double consumption;
     public Long price;
     public LocalDateTime createdAt;
     public LocalDateTime updatedAt;
 
-    public ListingCarDTO(ListingCar listingCar) {
+    public ListingCarDTO(Car listingCar) {
         super();
         this.id = listingCar.getId();
         this.manufactor = listingCar.getManufactor();

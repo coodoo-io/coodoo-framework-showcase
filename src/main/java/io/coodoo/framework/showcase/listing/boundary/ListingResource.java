@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import io.coodoo.framework.listing.boundary.ListingParameters;
 import io.coodoo.framework.listing.boundary.ListingResult;
 import io.coodoo.framework.showcase.listing.boundary.dto.ListingCarDTO;
-import io.coodoo.framework.showcase.listing.entity.ListingCar;
+import io.coodoo.framework.showcase.listing.entity.Car;
 
 /**
  * Rest resource to demonstrate the usage of <strong>coodoo-listing</strong>
@@ -66,7 +66,7 @@ public class ListingResource {
      *         </ul>
      */
     @GET
-    public ListingResult<ListingCar> getCarsListing(@BeanParam ListingParameters listingParameters) {
+    public ListingResult<Car> getCarsListing(@BeanParam ListingParameters listingParameters) {
 
         return listingService.getCarListing(listingParameters);
     }
@@ -79,7 +79,7 @@ public class ListingResource {
      */
     @GET
     @Path("/list")
-    public List<ListingCar> getCars(@BeanParam ListingParameters listingParameters) {
+    public List<Car> getCars(@BeanParam ListingParameters listingParameters) {
 
         return listingService.getCars(listingParameters);
     }
@@ -107,7 +107,7 @@ public class ListingResource {
     @Path("/dto")
     public ListingResult<ListingCarDTO> getCarsListingDto(@BeanParam ListingParameters listingParameters) {
 
-        ListingResult<ListingCar> listingResult = listingService.getCarListing(listingParameters);
+        ListingResult<Car> listingResult = listingService.getCarListing(listingParameters);
 
         List<ListingCarDTO> list = listingResult.getResults().stream().map(ListingCarDTO::new).collect(Collectors.toList());
 
@@ -124,7 +124,7 @@ public class ListingResource {
     @Path("/dto/list")
     public List<ListingCarDTO> getCarsDto(@BeanParam ListingParameters listingParameters) {
 
-        ListingResult<ListingCar> listingResult = listingService.getCarListing(listingParameters);
+        ListingResult<Car> listingResult = listingService.getCarListing(listingParameters);
 
         return listingResult.getResults().stream().map(ListingCarDTO::new).collect(Collectors.toList());
     }
