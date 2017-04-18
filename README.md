@@ -24,12 +24,12 @@ This project contains a little demo application that combines all available cood
 
 So far there are:
 - [coodoo-listing](https://github.com/coodoo-io/coodoo-listing) *JavaEE JPA/JAX-RS Listing Framework*
-- [coodoo-app-config](https://github.com/coodoo-io/coodoo-app-config) *Simple persistent application configuration service* `*`
-- [coodoo-audit](https://github.com/coodoo-io/coodoo-audit) *Audit framework to store data changes by observing JPA events* `*`
-- [coodoo-file-export](https://github.com/coodoo-io/coodoo-file-export) *Convenience util to provide POJO list exports as downloadable files in a JavaEE/Rest environment* `*`
+- [coodoo-app-config](https://github.com/coodoo-io/coodoo-app-config) *Simple persistent application configuration service**
+- [coodoo-audit](https://github.com/coodoo-io/coodoo-audit) *Audit framework to store data changes by observing JPA events**
+- [coodoo-file-export](https://github.com/coodoo-io/coodoo-file-export) *Convenience util to provide POJO list exports as downloadable files in a JavaEE/Rest environment**
 
 
-`*`: *Not implemented yet*
+*: *Not implemented yet*
 
 
 ## Install
@@ -69,7 +69,9 @@ To run this project on your own you'll need a [WildFly 10.x](http://wildfly.org/
 
 The
 [Code](https://github.com/coodoo-io/coodoo-framework-showcase/tree/master/src/main/java/io/coodoo/framework/showcase/listing)
-for the example implementation of coodoo-listing provides a 
+for the example implementation of
+[coodoo-listing](https://github.com/coodoo-io/coodoo-listing)
+provides a 
 [Rest resource](./src/main/java/io/coodoo/framework/showcase/listing/boundary/ListingResource.java)
 and a 
 [stateless EJB](./src/main/java/io/coodoo/framework/showcase/listing/boundary/ListingService.java)
@@ -81,7 +83,7 @@ that will give you listing access to an
 
 Here are
 [examples](https://github.com/coodoo-io/coodoo-framework-showcase/tree/master/src/main/java/io/coodoo/framework/showcase/listing/boundary/examples)
-that focus an following issues:
+that focus on following issues:
 
 - [Filter (search on whole table)](./src/main/java/io/coodoo/framework/showcase/listing/boundary/examples/ListingFilterService.java)
 - [Filter attributes](./src/main/java/io/coodoo/framework/showcase/listing/boundary/examples/ListingFilterAttributesService.java)
