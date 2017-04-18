@@ -1,4 +1,4 @@
-package io.coodoo.framework.showcase.listing.boundary.examples;
+package io.coodoo.framework.showcase.listing.boundary.examples.types;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

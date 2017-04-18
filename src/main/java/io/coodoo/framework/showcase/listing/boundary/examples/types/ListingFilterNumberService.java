@@ -1,4 +1,4 @@
-package io.coodoo.framework.showcase.listing.boundary.examples;
+package io.coodoo.framework.showcase.listing.boundary.examples.types;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
