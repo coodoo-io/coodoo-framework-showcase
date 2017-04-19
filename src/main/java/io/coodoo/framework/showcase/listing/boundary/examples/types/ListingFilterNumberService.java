@@ -60,12 +60,32 @@ public class ListingFilterNumberService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getAllWith140o8Hp() {
+    public ListingResult<Car> getAllWith140Hp() {
 
-        // http://localhost:8080/showcase/api/listing?filter-hp=140,8
+        // http://localhost:8080/showcase/api/listing?filter-hp=140
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("hp", "140,8");
+        listingParameters.addFilterAttributes("hp", "140");
+
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
+    }
+
+    public ListingResult<Car> getAllWithLike14Hp() {
+
+        // http://localhost:8080/showcase/api/listing?filter-hp=LIKE 14
+
+        ListingParameters listingParameters = new ListingParameters();
+        listingParameters.addFilterAttributes("hp", "LIKE 14");
+
+        return Listing.getListingResult(entityManager, Car.class, listingParameters);
+    }
+
+    public ListingResult<Car> getAllWithAConsumptionOf4o2() {
+
+        // http://localhost:8080/showcase/api/listing?filter-consumption=4,2
+
+        ListingParameters listingParameters = new ListingParameters();
+        listingParameters.addFilterAttributes("consumption", "4,2");
         /*
          * Note: The decimal point is a comma (,) that will be replaced by a (.) in the query. Both symbols are allowed
          */
@@ -73,14 +93,14 @@ public class ListingFilterNumberService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getAllWithLike140Hp() {
+    public ListingResult<Car> getAllWithAPriceContaining777() {
 
-        // http://localhost:8080/showcase/api/listing?filter-hp=140
+        // http://localhost:8080/showcase/api/listing?filter-price=777
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("hp", "140");
+        listingParameters.addFilterAttributes("price", "777");
         /*
-         * There are no entries with exactly 140 hp. To solve this there is the @ListingLikeOnNumber annotation that enables a LIKE query on the attribute.
+         * There is the @ListingLikeOnNumber annotation that enables a LIKE query on the attribute.
          */
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);

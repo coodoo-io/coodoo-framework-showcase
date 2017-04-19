@@ -55,11 +55,6 @@ public class ListingFilterService {
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.setFilter("2017");
 
-        // possible matching attributes in the results:
-        // fuelInjection: "DI Euro6 2017"
-        // updatedAt: 2017-03-06T12:48:28.651Z
-        // ...
-
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
@@ -71,9 +66,9 @@ public class ListingFilterService {
         listingParameters.setFilter("man");
 
         // possible matching attributes in the results:
-        // name: "Land Rover Discovery Sport 2.0 TD4 CommandShift 4x4"
+        // type: "Sport 2.0 TD4 CommandShift 4x4"
         // model: "Countryman"
-        // name: "Renault Talisman Grandtour TCe 200 EDC"
+        // model: "Talisman"
         // ...
         //
         // but not "transmission" since it is annotated to get ignored (@ListingFilterIgnore)
@@ -82,12 +77,12 @@ public class ListingFilterService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> findAllFishAndWhatHappendInMarch() {
+    public ListingResult<Car> findAllXXAndWhatHappendOnMarch12th2017() {
 
-        // http://localhost:8080/showcase/api/listing?filter=fisch|3.2017
+        // http://localhost:8080/showcase/api/listing?filter=xx|12.3.2017
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.setFilter("fisch|3.2017");
+        listingParameters.setFilter("xx|12.3.2017");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }

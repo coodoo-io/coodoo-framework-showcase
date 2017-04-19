@@ -40,12 +40,12 @@ public class ListingFilterTextService {
     @PersistenceContext
     EntityManager entityManager;
 
-    public ListingResult<Car> getNamesWith1o3() {
+    public ListingResult<Car> getTypesWith1o3() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name=1.3
+        // http://localhost:8080/showcase/api/listing?filter-type=1.3
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "1.3");
+        listingParameters.addFilterAttributes("type", "1.3");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
@@ -64,10 +64,10 @@ public class ListingFilterTextService {
 
     public ListingResult<Car> getAllAudiotQ210TFSI() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name=Audi Q2 1.0 TFSI
+        // http://localhost:8080/showcase/api/listing?filter-type=Audi Q2 1.0 TFSI
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "Audi Q2 1.0 TFSI");
+        listingParameters.addFilterAttributes("type", "Audi Q2 1.0 TFSI");
 
         // Rsults
         // Audi Q2 1.0 TFSI"
@@ -78,10 +78,10 @@ public class ListingFilterTextService {
 
     public ListingResult<Car> getTheOneAudiotQ210TFSI() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name="Audi Q2 1.0 TFSI"
+        // http://localhost:8080/showcase/api/listing?filter-type="Audi Q2 1.0 TFSI"
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "\"Audi Q2 1.0 TFSI\"");
+        listingParameters.addFilterAttributes("type", "\"Audi Q2 1.0 TFSI\"");
 
         // Rsult
         // Audi Q2 1.0 TFSI"
@@ -89,32 +89,25 @@ public class ListingFilterTextService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getManualTransmission() {
-
-        // http://localhost:8080/showcase/api/listing?filter-transmission=man
-
-        ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("transmission", "man");
-
-        return Listing.getListingResult(entityManager, Car.class, listingParameters);
-    }
-
     public ListingResult<Car> getAudiModelsWith1o4Engine() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name=Audi A? 1.4
+        // http://localhost:8080/showcase/api/listing?filter-manufactor=Audi&filter-model=A?&filter-type=1.4
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "Audi A? 1.4");
+        listingParameters.addFilterAttributes("manufactor", "Audi");
+        listingParameters.addFilterAttributes("model", "A?");
+        listingParameters.addFilterAttributes("type", "1.4");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
     public ListingResult<Car> getAudiModelsWithTFSIEngine() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name=Audi * TFSI
+        // http://localhost:8080/showcase/api/listing?filter-manufactor=Audi&filter-type=* TFSI
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "Audi * TFSI");
+        listingParameters.addFilterAttributes("manufactor", "Audi");
+        listingParameters.addFilterAttributes("type", "* TFSI");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }

@@ -93,10 +93,10 @@ public class ListingFilterDateService {
 
     public ListingResult<Car> getAllBeforeAYear() {
 
-        // http://localhost:8080/showcase/api/listing?filter-createdAt=<2016
+        // http://localhost:8080/showcase/api/listing?filter-createdAt=<2017
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("createdAt", "<2016");
+        listingParameters.addFilterAttributes("createdAt", "<2017");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
@@ -151,7 +151,7 @@ public class ListingFilterDateService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getAllFromNikolasToEndOfYear() {
+    public ListingResult<Car> getAllFromNikolausToEndOfYear() {
 
         // http://localhost:8080/showcase/api/listing?filter-createdAt=6.12.2016-2016
 

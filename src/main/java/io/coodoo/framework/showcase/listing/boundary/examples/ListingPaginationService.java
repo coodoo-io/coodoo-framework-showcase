@@ -90,14 +90,14 @@ public class ListingPaginationService {
 
     public ListingResult<Car> getPage3By50ResultsPerPageAndSort() {
 
-        // http://localhost:8080/showcase/api/listing?page=3&limit=50&sort=name
+        // http://localhost:8080/showcase/api/listing?page=3&limit=50&sort=type
 
-        ListingParameters listingParameters = new ListingParameters(3, 50, "name");
+        ListingParameters listingParameters = new ListingParameters(3, 50, "type");
         // OR:
         // ListingParameters listingParameters = new ListingParameters();
         // listingParameters.setPage(3);
         // listingParameters.setLimit(50);
-        // listingParameters.setSortAttribute("name");
+        // listingParameters.setSortAttribute("type");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }

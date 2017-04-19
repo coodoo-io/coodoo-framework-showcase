@@ -5,8 +5,8 @@ package io.coodoo.framework.showcase.listing.entity;
  * 
  * @author coodoo GmbH (coodoo.io)
  */
-public enum CarFuel {
+public enum Vehicle {
 
-    Benzin, Diesel, Erdgas;
+    LIMOUSINE, STATION_WAGON, COUPE, CONVERTIBLE, SUV, VAN, MINIBUS, BOXTYPE_LORRY, PLATFORM_LORRY, PICKUP;
 
 }

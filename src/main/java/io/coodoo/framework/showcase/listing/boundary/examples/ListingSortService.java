@@ -50,12 +50,12 @@ public class ListingSortService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getCarsSortByNameAsc() {
+    public ListingResult<Car> getCarsSortByTypeAsc() {
 
-        // http://localhost:8080/showcase/api/listing?sort=+name
+        // http://localhost:8080/showcase/api/listing?sort=+type
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.setSortAttribute("+name");
+        listingParameters.setSortAttribute("+type");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }

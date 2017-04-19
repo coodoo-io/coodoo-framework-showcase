@@ -65,24 +65,24 @@ public class ListingFilterAttributesService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getConvertableWith2Seats() {
+    public ListingResult<Car> getConvertibleWith2Seats() {
 
-        // http://localhost:8080/showcase/api/listing?filter-seats=2&filter-vehicle=cabrio
+        // http://localhost:8080/showcase/api/listing?filter-seats=2&filter-vehicle=Convertible
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("seats", "2");
-        listingParameters.addFilterAttributes("vehicle", "cabrio");
+        listingParameters.addFilterAttributes("vehicle", "Convertible");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getConvertableWithOtherThan2Seats() {
+    public ListingResult<Car> getConvertibleWithOtherThan2Seats() {
 
-        // http://localhost:8080/showcase/api/listing?filter-seats=!2&filter-vehicle=cabrio
+        // http://localhost:8080/showcase/api/listing?filter-seats=!2&filter-vehicle=Convertible
 
         ListingParameters listingParameters = new ListingParameters();
         listingParameters.addFilterAttributes("seats", "!2");
-        listingParameters.addFilterAttributes("vehicle", "cabrio");
+        listingParameters.addFilterAttributes("vehicle", "Convertible");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
@@ -110,39 +110,37 @@ public class ListingFilterAttributesService {
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
-    public ListingResult<Car> getCarsWithMiscEquipmentButNoFuelInjection() {
+    public ListingResult<Car> getCarsWithPayloadThatWereNotUpdatedYet() {
 
-        // http://localhost:8080/showcase/api/listing?filter-misc=NOT NULL&filter-fuelInjection=NULL
+        // http://localhost:8080/showcase/api/listing?filter-payload=NOT NULL&filter-updatedAt=NULL
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("misc", "NOT NULL");
-        listingParameters.addFilterAttributes("fuelInjection", "NULL");
+        listingParameters.addFilterAttributes("payload", "NOT NULL");
+        listingParameters.addFilterAttributes("updatedAt", "NULL");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
     public ListingResult<Car> getAllBMW1er118i3T() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name=BMW 118i 3T
+        // http://localhost:8080/showcase/api/listing?filter-type=118d 3T
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "BMW 118i 3T");
+        listingParameters.addFilterAttributes("type", "118d 3T");
         // Name of 2 cars:
-        // "BMW 118i 3T"
-        // "BMW 118i 3T Steptronic"
+        // BMW 118i 3T
+        // BMW 118i 3T Steptronic
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
 
     public ListingResult<Car> getTheOneBMW1er118i3TWithoutSteptronic() {
 
-        // http://localhost:8080/showcase/api/listing?filter-name="BMW 118i 3T"
+        // http://localhost:8080/showcase/api/listing?filter-type="118d 3T "
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("name", "\"BMW 118i 3T\"");
-        // Name of 2 cars:
-        // "BMW 118i 3T"
-        // "BMW 118i 3T Steptronic"
+        listingParameters.addFilterAttributes("type", "\"118d 3T \"");
+        // Just one result: BMW 118i 3T
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }

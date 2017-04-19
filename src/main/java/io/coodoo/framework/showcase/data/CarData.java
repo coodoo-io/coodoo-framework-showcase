@@ -1,8 +1,7 @@
-package io.coodoo.framework.showcase.listing.entity;
+package io.coodoo.framework.showcase.data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,70 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.coodoo.framework.listing.boundary.annotation.ListingFilterIgnore;
-import io.coodoo.framework.listing.boundary.annotation.ListingLikeOnNumber;
+import io.coodoo.framework.export.boundary.annotation.ExportColumn;
 
-/**
- * Entity to demonstrate the usage of <strong>coodoo-listing</strong>
- * 
- * @author coodoo GmbH (coodoo.io)
- */
 @Entity
 @Table(name = "car")
-public class Car {
+public class CarData {
 
-    /**
-     * The annotation <code>@ListingFilterIgnore<code> avoids this field from be part in a type wide listing filter
-     */
-    @ListingFilterIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ExportColumn("Index")
     private Long id;
-
-    @Column
     private String manufactor;
-
-    @Column
     private String model;
-
-    @Column
     private String type;
-
-    @Column
     @Enumerated(EnumType.STRING)
     private Vehicle vehicle;
-
-    @Column
-    private Integer seats;
-
-    @Column
+    private Short seats;
+    private Integer payload;
     private Integer engineDisplacement;
-
-    @Column
     private Integer hp;
-
-    @Column
     private boolean allWheelDrive;
-
-    @Column
     @Enumerated(EnumType.STRING)
     private Fuel fuel;
-
-    @Column
     private Double consumption;
-
-    /**
-     * The annotation <code>@ListingLikeOnNumber<code> enables a LIKE query on the attribute.
-     */
-    @ListingLikeOnNumber
-    @Column
+    private Integer co2Emission;
+    private Double noise;
     private Long price;
-
-    @Column
-    private LocalDateTime createdAt;
-
-    @Column
-    private LocalDateTime updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 
     public Long getId() {
         return id;
@@ -116,12 +79,20 @@ public class Car {
         this.vehicle = vehicle;
     }
 
-    public Integer getSeats() {
+    public Short getSeats() {
         return seats;
     }
 
-    public void setSeats(Integer seats) {
+    public void setSeats(Short seats) {
         this.seats = seats;
+    }
+
+    public Integer getPayload() {
+        return payload;
+    }
+
+    public void setPayload(Integer payload) {
+        this.payload = payload;
     }
 
     public Integer getEngineDisplacement() {
@@ -164,6 +135,22 @@ public class Car {
         this.consumption = consumption;
     }
 
+    public Integer getCo2Emission() {
+        return co2Emission;
+    }
+
+    public void setCo2Emission(Integer co2Emission) {
+        this.co2Emission = co2Emission;
+    }
+
+    public Double getNoise() {
+        return noise;
+    }
+
+    public void setNoise(Double noise) {
+        this.noise = noise;
+    }
+
     public Long getPrice() {
         return price;
     }
@@ -172,20 +159,28 @@ public class Car {
         this.price = price;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "CarData [id=" + id + ", manufactor=" + manufactor + ", model=" + model + ", type=" + type + ", vehicle=" + vehicle + ", seats=" + seats
+                        + ", payload=" + payload + ", engineDisplacement=" + engineDisplacement + ", hp=" + hp + ", allWheelDrive=" + allWheelDrive + ", fuel="
+                        + fuel + ", consumption=" + consumption + ", co2Emission=" + co2Emission + ", noise=" + noise + ", price=" + price + ", createdAt="
+                        + createdAt + ", updatedAt=" + updatedAt + "]";
     }
 
 }
