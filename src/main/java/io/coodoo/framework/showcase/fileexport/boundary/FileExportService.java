@@ -24,6 +24,24 @@ public class FileExportService {
     EntityManager entityManager;
 
     /**
+     * The mayor functionality is processing a POJO list into a file. Therefore following methods are available.
+     * 
+     * @return file export as a ByteArrayOutputStream
+     */
+    public ByteArrayOutputStream getByteArrayOutputStream(String fileType, List<?> objects) {
+        switch (fileType) {
+            case "xls":
+                return FileExport.buildXLS(objects);
+            case "csv":
+                return FileExport.buildCSV(objects);
+            case "doc":
+                return FileExport.buildDOC(objects);
+            default:
+                return null;
+        }
+    }
+
+    /**
      * Gets all cars using the plain entity (raw)
      * 
      * @return List of all cars without export customization
@@ -39,10 +57,6 @@ public class FileExportService {
      */
     public List<CustomCar> getAllCarsCustom() {
         return Listing.getListing(entityManager, CustomCar.class, 1, 0);
-    }
-
-    public ByteArrayOutputStream getAllCarsCustomX() {
-        return FileExport.buildCSV(getAllCarsCustom());
     }
 
 }

@@ -26,7 +26,7 @@ So far there are:
 - [coodoo-listing](https://github.com/coodoo-io/coodoo-listing) *JavaEE JPA/JAX-RS Listing Framework*
 - [coodoo-app-config](https://github.com/coodoo-io/coodoo-app-config) *Simple persistent application configuration service**
 - [coodoo-audit](https://github.com/coodoo-io/coodoo-audit) *Audit framework to store data changes by observing JPA events**
-- [coodoo-file-export](https://github.com/coodoo-io/coodoo-file-export) *Convenience util to provide POJO list exports as downloadable files in a JavaEE/Rest environment**
+- [coodoo-file-export](https://github.com/coodoo-io/coodoo-file-export) *Convenience util to provide POJO list exports as downloadable files in a JavaEE/Rest environment*
 
 
 *: *Not implemented yet*
@@ -106,8 +106,12 @@ that focus on following issues:
 
 ### File export
 
-*Not implemented yet*
-
+See the 
+[example Rest resource](./src/main/java/io/coodoo/framework/showcase/fileexport/boundary/FileExportResource.java)
+that provides the car data as downloadable files. The types XLS, CSV and rudimentary DOC are supported:
+- [Raw](./src/main/java/io/coodoo/framework/showcase/fileexport/entity/RawCar.java) *A plain POJO (entity) without makeup*
+- [Custom](./src/main/java/io/coodoo/framework/showcase/fileexport/entity/CustomCar.java) *Same POJO as Raw, but annotated to make the resulting file look pretty*
+- [Price list](./src/main/java/io/coodoo/framework/showcase/fileexport/boundary/CarPricelistPojo.java) *A POJO just to fit the needs of the wanted export file, as it says a car price list*
 
 ## Maintainers
 

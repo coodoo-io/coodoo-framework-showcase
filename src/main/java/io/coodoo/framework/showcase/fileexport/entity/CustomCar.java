@@ -14,16 +14,36 @@ import io.coodoo.framework.export.boundary.annotation.ExportBooleanLabels;
 import io.coodoo.framework.export.boundary.annotation.ExportColumn;
 import io.coodoo.framework.export.boundary.annotation.ExportDateTimePattern;
 import io.coodoo.framework.export.boundary.annotation.ExportIgnoreField;
+import io.coodoo.framework.export.boundary.annotation.ExportTitle;
 
+/**
+ * Entity to demonstrate the usage of <strong>coodoo-file-export</strong>
+ * 
+ * <p>
+ * This entity uses annotations to define the outcome of a file export.
+ * </p>
+ * 
+ * @author coodoo GmbH (coodoo.io)
+ */
+/**
+ * The title/header of the file export can be set by the {@link @ExportTitle} annotation
+ */
+@ExportTitle("Fahrzeuge")
 @Entity
 @Table(name = "car")
 public class CustomCar {
 
+    /**
+     * This field is not part of a file export, so it has the {@link ExportIgnoreField} annotation
+     */
+    @ExportIgnoreField
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ExportIgnoreField
     private Long id;
 
+    /**
+     * The name of this attribute in a file export is defined by the {@link @ExportColumn} annotation
+     */
     @ExportColumn("Hersteller")
     private String manufactor;
 
@@ -49,8 +69,11 @@ public class CustomCar {
     @ExportColumn("Leistung (PS)")
     private Integer hp;
 
-    @ExportColumn("Allrad")
+    /**
+     * The {@link @ExportBooleanLabels} annotation allows to define other values than "true"/"false"
+     */
     @ExportBooleanLabels(trueLabel = "Ja", falseLabel = "Nein")
+    @ExportColumn("Allrad")
     private boolean allWheelDrive;
 
     @Enumerated(EnumType.STRING)
@@ -69,6 +92,9 @@ public class CustomCar {
     @ExportColumn("Preis (EUR)")
     private Long price;
 
+    /**
+     * As the name says, the {@link @ExportDateTimePattern} annotation allows to define a pattern for the date/time representation in the export file
+     */
     @ExportColumn("Aufgenommen")
     @ExportDateTimePattern
     private LocalDateTime createdAt;

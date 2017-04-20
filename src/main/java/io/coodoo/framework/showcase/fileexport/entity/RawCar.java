@@ -10,10 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.coodoo.framework.export.boundary.annotation.ExportColumn;
-import io.coodoo.framework.export.boundary.annotation.ExportDateTimePattern;
-import io.coodoo.framework.export.boundary.annotation.ExportIgnoreField;
-
+/**
+ * Entity to demonstrate the usage of <strong>coodoo-file-export</strong>
+ * 
+ * @author coodoo GmbH (coodoo.io)
+ */
 @Entity
 @Table(name = "car")
 public class RawCar {

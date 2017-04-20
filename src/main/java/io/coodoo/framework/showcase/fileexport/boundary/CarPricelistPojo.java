@@ -3,6 +3,11 @@ package io.coodoo.framework.showcase.fileexport.boundary;
 import io.coodoo.framework.export.boundary.annotation.ExportColumn;
 import io.coodoo.framework.showcase.fileexport.entity.CustomCar;
 
+/**
+ * A POJO just to fit the needs of a car price list
+ * 
+ * @author coodoo GmbH (coodoo.io)
+ */
 public class CarPricelistPojo {
 
     @ExportColumn("Preis")

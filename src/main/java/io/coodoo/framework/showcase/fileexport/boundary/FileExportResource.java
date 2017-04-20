@@ -1,5 +1,6 @@
 package io.coodoo.framework.showcase.fileexport.boundary;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import io.coodoo.framework.export.boundary.FileExport;
@@ -16,7 +18,19 @@ import io.coodoo.framework.showcase.fileexport.entity.CustomCar;
 import io.coodoo.framework.showcase.fileexport.entity.RawCar;
 
 /**
- * Rest resource to demonstrate the usage of <strong>coodoo-listing</strong>
+ * Rest resource to demonstrate the usage of <strong>coodoo-export-file</strong>
+ * 
+ * <p>
+ * This Rest resource provides the car data as downloadable files. The types XLS, CSV and rudimentary DOC are supported. </br>
+ * The examples:
+ * <ul>
+ * <li><strong>Raw</strong> - A plain POJO (entity) without makeup</li>
+ * <li><strong>Custom</strong> - Same POJO as Raw, but annotated to make the resulting file look pretty</li>
+ * <li><strong>Pricelist</strong> - A POJO just to fit the needs of the wanted export file, as it says a car price list</li>
+ * </ul>
+ * </p>
+ * 
+ * <i>You have a list of something? The class {@Link FileExport} does the rest!</i>
  * 
  * @author coodoo GmbH (coodoo.io)
  */
@@ -27,20 +41,30 @@ public class FileExportResource {
     @Inject
     FileExportService fileExportService;
 
+    /**
+     * @return car list XLS download from raw POJO
+     */
     @GET
     @Path("/raw/xls")
     @Produces({FileExport.MEDIA_TYPE_XLS})
     public Response exportRawXls() {
+
+        // http://localhost:8080/showcase/api/export/raw/xsl
 
         List<RawCar> cars = fileExportService.getAllCarsRaw();
 
         return FileExport.createXLSResponse(cars, "Raw cars enity export as XLS");
     }
 
+    /**
+     * @return car list CSV download from raw POJO
+     */
     @GET
     @Path("/raw/csv")
     @Produces({FileExport.MEDIA_TYPE_CSV})
     public Response exportRawCsv() {
+
+        // http://localhost:8080/showcase/api/export/raw/csv
 
         List<RawCar> cars = fileExportService.getAllCarsRaw();
 
@@ -54,30 +78,63 @@ public class FileExportResource {
         // ...
     }
 
+    /**
+     * @return car list CSV download from raw POJO without the FileExport convenience
+     */
+    @GET
+    @Path("/raw/csv/inconvenient")
+    @Produces("text/csv")
+    public Response exportRawCsvInconvenient() {
+
+        // http://localhost:8080/showcase/api/export/raw/xsl/inconvenient
+
+        List<RawCar> cars = fileExportService.getAllCarsRaw();
+
+        ByteArrayOutputStream csvDataStream = fileExportService.getByteArrayOutputStream("csv", cars);
+
+        return Response.ok(csvDataStream.toByteArray(), MediaType.APPLICATION_OCTET_STREAM)
+                        .header("Content-Disposition", "attachment;filename=InconvenientWay.csv").build();
+    }
+
+    /**
+     * @return car list DOCX download from raw POJO
+     */
     @GET
     @Path("/raw/docx")
     @Produces({FileExport.MEDIA_TYPE_DOCX})
     public Response exportRawDocx() {
+
+        // http://localhost:8080/showcase/api/export/raw/docx
 
         List<RawCar> cars = fileExportService.getAllCarsRaw();
 
         return FileExport.createDOCResponse(cars, "Raw cars enity export as DOCX");
     }
 
+    /**
+     * @return car list XLS download from custom POJO
+     */
     @GET
     @Path("/custom/xls")
     @Produces({FileExport.MEDIA_TYPE_XLS})
     public Response exportCustomXls() {
+
+        // http://localhost:8080/showcase/api/export/custom/xls
 
         List<CustomCar> cars = fileExportService.getAllCarsCustom();
 
         return FileExport.createXLSResponse(cars, "Custom cars enity export as XLS");
     }
 
+    /**
+     * @return car list CSV download from custom POJO
+     */
     @GET
     @Path("/custom/csv")
     @Produces({FileExport.MEDIA_TYPE_XLS})
     public Response exportCustomCsv() {
+
+        // http://localhost:8080/showcase/api/export/custom/csv
 
         List<CustomCar> cars = fileExportService.getAllCarsCustom();
 
@@ -92,20 +149,30 @@ public class FileExportResource {
         // ...
     }
 
+    /**
+     * @return car list DOCX download from custom POJO
+     */
     @GET
     @Path("/custom/docx")
     @Produces({FileExport.MEDIA_TYPE_DOCX})
     public Response exportCustomDocx() {
+
+        // http://localhost:8080/showcase/api/export/custom/docx
 
         List<CustomCar> cars = fileExportService.getAllCarsCustom();
 
         return FileExport.createDOCResponse(cars, "Custom cars enity export as DOCX");
     }
 
+    /**
+     * @return car price list XLS download from custom POJO
+     */
     @GET
     @Path("/custom/xls/pricelist")
     @Produces({FileExport.MEDIA_TYPE_XLS})
     public Response exportCustomXlsPricelist() {
+
+        // http://localhost:8080/showcase/api/export/custom/xsl/pricelist
 
         List<CustomCar> cars = fileExportService.getAllCarsCustom();
 
@@ -116,10 +183,15 @@ public class FileExportResource {
         return FileExport.createXLSResponse(pricelist, "Pricelist as XLS");
     }
 
+    /**
+     * @return car price list CSV download from custom POJO
+     */
     @GET
     @Path("/custom/csv/pricelist")
     @Produces({FileExport.MEDIA_TYPE_XLS})
     public Response exportCustomCsvPricelist() {
+
+        // http://localhost:8080/showcase/api/export/custom/csv/pricelist
 
         List<CustomCar> cars = fileExportService.getAllCarsCustom();
 
@@ -138,10 +210,15 @@ public class FileExportResource {
         // ...
     }
 
+    /**
+     * @return car price list DOCX download from custom POJO
+     */
     @GET
     @Path("/custom/docx/pricelist")
     @Produces({FileExport.MEDIA_TYPE_DOCX})
     public Response exportCustomDocxPricelist() {
+
+        // http://localhost:8080/showcase/api/export/custom/docx/pricelist
 
         List<CustomCar> cars = fileExportService.getAllCarsCustom();
 
