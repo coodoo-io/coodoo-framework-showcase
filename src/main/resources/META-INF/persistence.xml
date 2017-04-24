@@ -5,6 +5,10 @@
          The java:/DefaultDS points to the default data source of your server JavaEE Server.
          In case of JBoss Wildfly: Embedded HSQL DB usually configured in /standalone/configuration/standalone.xml -->
     <jta-data-source>java:jboss/datasources/ShowcaseDS</jta-data-source>
+
+	<!-- coodoo-app-config -->
+    <class>io.coodoo.framework.appconfig.entity.AppConfigValue</class> 
+
     <properties>
       <!-- Is used to specify the action taken by the persistence provider when an application is deployed.
            If the property is not set, the persistence provider will not create or drop any database artifacts on server start/stop.
@@ -26,5 +30,6 @@
       <!-- Hibernate will put comments inside all generated SQL statements to hint what’s the generated SQL trying to do -->
       <property name="use_sql_comments" value="true" />
     </properties>
+    
   </persistence-unit>
 </persistence>

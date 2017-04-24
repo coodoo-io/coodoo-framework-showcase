@@ -48,7 +48,7 @@ public class ListingFilterBooleanService {
         // http://localhost:8080/showcase/api/listing?filter-allWheelDrive=false
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("allWheelDrive", "fasle");
+        listingParameters.addFilterAttributes("allWheelDrive", "false");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }
@@ -58,7 +58,7 @@ public class ListingFilterBooleanService {
         // http://localhost:8080/showcase/api/listing?filter-allWheelDrive=false
 
         ListingParameters listingParameters = new ListingParameters();
-        listingParameters.addFilterAttributes("allWheelDrive", "fasle OR NULL");
+        listingParameters.addFilterAttributes("allWheelDrive", "false OR NULL");
 
         return Listing.getListingResult(entityManager, Car.class, listingParameters);
     }

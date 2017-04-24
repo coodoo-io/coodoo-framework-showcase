@@ -57,7 +57,12 @@
 		<dependency>
 			<groupId>io.coodoo</groupId>
 			<artifactId>coodoo-file-export</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.coodoo</groupId>
+			<artifactId>coodoo-app-config</artifactId>
+			<version>1.2.1</version>
 		</dependency>
         
 		<!-- JAX-RS configuration -->

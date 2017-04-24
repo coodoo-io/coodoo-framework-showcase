@@ -10,15 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.coodoo.framework.export.boundary.annotation.ExportColumn;
-
 @Entity
 @Table(name = "car")
 public class CarData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ExportColumn("Index")
     private Long id;
     private String manufactor;
     private String model;
