@@ -115,9 +115,7 @@ that provides the car data as downloadable files. The types XLS, CSV and rudimen
 
 ## Maintainers
 
-[Markus Kühle](https://github.com/mkuehle)
-
-[Arend Kühle](https://github.com/laugen)
+[coodoo](https://github.com/orgs/coodoo-io/people)
 
 ## Contribute
 
